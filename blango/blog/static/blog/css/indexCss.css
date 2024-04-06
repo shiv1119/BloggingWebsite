@@ -1,0 +1,40 @@
+.index_container {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  height: auto;
+  max-width: auto;
+  margin: 30px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 10px;
+  color: black;
+  gap: 20px;
+}
+
+.index_container_left {
+  flex: 2;
+}
+
+.index_container_right {
+  flex: 1;
+  align-items: flex-start;
+}
+.index_container_image {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  align-self: self-end;
+}
+
+.index_container_readmore {
+  width: 100px;
+  height: auto;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: rgb(16, 60, 67);
+}

@@ -1,0 +1,9 @@
+{% for user_post in user_posts %}
+<div class="">
+    <a href = "{% url "blog-post-detail" user_post.slug %}" > {{user_post.title}} </a>
+    <p> Summary : {{user_post.summary}} </p>
+</div>
+
+
+
+{% endfor %}

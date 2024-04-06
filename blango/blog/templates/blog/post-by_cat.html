@@ -1,0 +1,8 @@
+{% comment %} <h2>{{ category.name }}</h2>
+<ul>
+    {% for post in posts %}
+        <li><a href="{% url 'blog-post-detail' post.slug %}">{{ post.title }}</a>
+        <p> Summary : {{post.summary}} </p>
+        </li>
+    {% endfor %}
+</ul> {% endcomment %}

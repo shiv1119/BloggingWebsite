@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load blog_extras %}
+{% block content %}
+    {% for post in posts %}
+        <div class="index_container">
+            <div class="index_container_left">
+                <h3>{{ post.title }}</h3>
+                {% include "blog/post-byline.html" %}
+                <p>{{ post.summary }}</p>
+                <p>({{ post.content|wordcount }} words)
+                    <a class="index_container_readmore" href="{% url "blog-post-detail" post.slug%}">Read More</a>
+                </p>
+            </div>
+            <div class="index_container_right">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }} Image" class="index_container_image">
+            {% endif %}
+            
+            </div> 
+        </div>
+
+    {% endfor %}
+
+{% comment %} {% row %}
+    {% posts_by_category 1 %}
+    {% posts_by_category 2 %}
+    {% posts_by_category 3 %}
+    {% posts_by_category 4 %}
+    {% posts_by_category 5 %}
+{% endrow %} {% endcomment %}
+{% endblock %}

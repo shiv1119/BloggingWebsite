@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% load blog_extras %} {% block content %}
+<h2>{{ post.title }}</h2>
+<p>Views : {{ view_count }}</p>
+{% row %}
+<div class="col">{% include "blog/post-byline.html" %}</div>
+{% endrow %} 
+<br>
+{% row %}
+    {% if post.image %}
+        <img width="50%" height = "auto" src="{{ post.image.url }}" alt="{{ post.title }} Image">
+    {% endif %}
+{% endrow %}
+<br>
+{% row %}
+    <div> 
+    {{ post.content | safe }}
+    </div>
+    <div> <br><h4>Conclusion </h4>{{ post.summary | safe }}
+        <br><br>
+    </div>
+    
+    {% if post.author.profile %} 
+        {% row %} 
+            {% col %}
+                <h4>About the author</h4>
+                <p>
+              <img
+                    class="img-thumbnail rounded-circle"
+                    style="width: 55px; height: 55px"
+                    src="{{ post.author.profile.profile_images.url }}"
+                    alt="image"
+                />&nbsp <b>{% author_details_tag %} </b> : 
+                {{ post.author.profile.bio }}
+                </p>
+            {% endcol %} 
+        {% endrow %} 
+    {% endif %} 
+        {% include "blog/post-comments.html" %} 
+    {% endrow %} 
+{% endblock %}

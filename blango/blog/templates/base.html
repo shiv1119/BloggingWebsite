@@ -1,0 +1,65 @@
+{% load static %}
+{% load blog_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome to Blango{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/indexCss.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"crossorigin="anonymous">
+
+</head>
+    <body class="body">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top border-bottom rounded-bottom" style="padding: .8rem 1.2rem; z-index: 1000; background:#ffeaea" >
+            <div class="container-fluid">
+                <a class="navbar-brand active" style="color:black" href="/"><b>Post It </b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                    <a class="nav-link"  style="color:black" href="{% url 'category_posts' 1 %}"> News</a>
+                    <a class="nav-link"  style="color:black" href="{% url 'category_posts' 2 %}">Programming</a>
+                    <a class="nav-link" style="color:black" href="{% url 'category_posts' 5 %}">Technology</a>
+                    <a class="nav-link" style="color:black" href="{% url 'category_posts' 4 %}">Sports</a>
+                    <a class="nav-link" style="color:black" href="{% url 'category_posts' 3 %}">Others</a>
+                    </div>
+                    <div class="d-flex ms-auto">
+                        <form method="GET", action="{% url 'search_view' %}" class="d-flex">
+                            {% csrf_token %}
+                            <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit" style="color:black">Search</button>
+                        </form>
+                        {% if request.user.is_active %}
+                            <a class="nav-link " href="{% url "profile" %}">Profile</a>
+                            <a class="nav-link" href="{% url "custom_logout" %}">Log Out</a>
+                        {% else %}
+                            <a class="nav-link" href="{% url "django_registration_register" %}">Register</a>
+                            <a class="nav-link" href="{% url "login" %}">Log In</a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+        <div class="container_grid">
+            <div>
+                {% block content %}
+
+                {% endblock %}</div>
+            <div class="base_grid1">
+                {% most_viewed_posts exclude_post_id=0 %}
+                {% recent_posts id=0 %} 
+            </div>
+        </div>
+
+        {% comment %} <div class="love">
+            Made with Love By Shiv Nandan
+        </div> {% endcomment %}
+        <script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        </script>
+    </body>
+</html>

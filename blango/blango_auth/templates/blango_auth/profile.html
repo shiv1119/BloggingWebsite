@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load blog_extras %}
+{% block title %}Blango Profile{% endblock %}
+{% block content %}
+{% row %}
+    {% col %}
+        <div class="text-center">
+            <h2>User Profile</h2>
+            <img class="img-thumbnail rounded-circle" style="width: 250px; height: 250px" src="{{ request.user.profile.profile_images.url }}" alt="Profile Image">
+            <p>User Name: {{ request.user.first_name }} {{ request.user.last_name }}</p>
+            <p>Bio: {{ request.user.profile.bio }}</p>
+            <p> User email : {{ request.user }}</p>
+            <p>Date of Birth: {{ request.user.profile.user_date_of_birth }}</p>
+            <p>Gender: {{ request.user.profile.get_user_gender_display }}</p>
+            <h4 class="mb-2">Your Posts :  </h4>
+            <a class="p-2 btn-primary text-white border-2 border-dark rounded-2 text-decoration-none" href="{% url 'create_post' %}">Create a New Post</a>
+            {% comment %} <p><a href="{% url "logout" %}">Log Out</a></p>  {% endcomment %}
+        </div>
+        <div class="mt-3"> 
+            {% user_posts request.user %}
+        </div>
+    {% endcol %}
+{% endrow %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+
+<h4>{{ title }}</h4>
+<ul>
+    {% for post_view in most_viewed_posts %}
+        <li>
+            <a href = "{% url "blog-post-detail" post_view.post.slug %}" > {{post_view.post.title}} </a>
+            <p> Summary : {{post_view.post.summary}} </p>
+        </li>
+    {% endfor %}
+</ul>
+
