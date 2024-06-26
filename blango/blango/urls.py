@@ -44,6 +44,7 @@ urlpatterns = [
     path('edit_post/<int:post_id>/', edit_post, name='edit_post'),
     path('accounts/profile/', my_view, name='my_view'),
     path('results/', search_view, name='search_view'),
+    path('summernote/', include('django_summernote.urls')),
 
 ]
 

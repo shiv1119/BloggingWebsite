@@ -1,0 +1,26 @@
+.body {
+  margin: 0px;
+  background: #fafafa;
+  color: rgb(0, 0, 0);
+  height: 100%;
+}
+
+.container_grid {
+  display: grid;
+  grid-template-columns: 5fr 1.5fr;
+  grid-template-rows: 1fr;
+  gap: 40px 40px;
+  grid-auto-flow: row;
+  grid-template-areas: '. .';
+  padding-left: 60px;
+  padding-right: 50px;
+}
+
+html.container_grid {
+  height: 100%;
+  margin: 0;
+}
+
+.base_grid1 {
+  text-align: justify;
+}

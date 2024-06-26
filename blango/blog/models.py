@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.utils.text import slugify
+from django_summernote.fields import SummernoteTextField
 
 # Create your models here.
 
@@ -40,8 +41,8 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="images/",blank=True, null=True)
     slug = models.SlugField(unique=True)
-    summary = models.TextField(max_length = 3000)
-    content = models.TextField()
+    summary = SummernoteTextField()
+    content = SummernoteTextField()
     tags = models.ManyToManyField(Tag, related_name="posts")
     comments = GenericRelation(Comment)
    
