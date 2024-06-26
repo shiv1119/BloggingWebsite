@@ -15,7 +15,7 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/shiv1119/bloggingwebsite?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/shiv1119/bloggingwebsite?color=56BEB8">
+  <!-- <img alt="License" src="https://img.shields.io/github/license/shiv1119/bloggingwebsite?color=56BEB8"> -->
 
   <img alt="Github issues" src="https://img.shields.io/github/issues/shiv1119/bloggingwebsite?color=56BEB8" />
 
