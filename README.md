@@ -46,7 +46,7 @@
 
 ## :dart: About ##
 
-Describe your project
+Blogging website to create blogs, play around user reguistrations etc.
 
 ## :sparkles: Features ##
 
